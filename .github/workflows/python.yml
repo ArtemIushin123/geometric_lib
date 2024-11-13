@@ -4,19 +4,6 @@ on:
   push:
     branches:
       - main
-      - release
-  pull_request:
-    branches:
-      - master
-      - release
-      - develop
-
-name: Python CI
-
-on:
-  push:
-    branches:
-      - main
       - develop
   pull_request:
     branches:
@@ -34,7 +21,7 @@ jobs:
         echo "GitHub ник:ArtemIushin123"
         
     - name: Checkout code
-        uses: actions/checkout@v2    
+      uses: actions/checkout@v2    
 
     - name: Set up Python 3.13
       uses: actions/setup-python@v4
