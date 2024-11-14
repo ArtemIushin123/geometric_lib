@@ -45,6 +45,7 @@ def get_figure_result():
     func = ''
     size = list()
     
+    # Вводим фигуру
     while fig not in figs:
         fig = input(f"Enter figure name, available are {figs}:\n")
     
