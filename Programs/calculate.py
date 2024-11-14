@@ -10,18 +10,20 @@ sizes = {
     'square-perimeter': 1,
 }
 
+
 def calc(fig, func, size):
     if fig not in figs:
         raise ValueError(f"Unknown figure: {fig}. "
                          f"Available figures are {figs}.")
+    
     if func not in funcs:
         raise ValueError(f"Unknown command: {func}. "
                          f"Available functions are {funcs}.")
-
+    
     if len(size) != sizes.get(f"{fig}-{func}", 1):
         raise ValueError(f"Expected {sizes.get(f'{fig}-{func}', 1)} "
                          f"values for {fig} {func}, but got {len(size)}.")
-
+    
     try:
         if fig == 'circle':
             module = circle
@@ -29,25 +31,26 @@ def calc(fig, func, size):
             module = square
         else:
             raise ValueError(f"Unsupported figure: {fig}")
-
+        
         function = getattr(module, func)
         result = function(*size)
         return result
-
+    
     except Exception as e:
         raise ValueError(f"Error calculating {func} of {fig} with size {size}: {e}")
+
 
 def get_figure_result():
     fig = ''
     func = ''
     size = list()
-
+    
     while fig not in figs:
         fig = input(f"Enter figure name, available are {figs}:\n")
-
+    
     while func not in funcs:
         func = input(f"Enter function name, available are {funcs}:\n")
-
+    
     while len(size) != sizes.get(f"{func}-{fig}", 1):
         try:
             size = list(map(int, input(
@@ -58,8 +61,9 @@ def get_figure_result():
                       f"values, you entered {len(size)}. Please try again.")
         except ValueError:
             print("Invalid input! Please enter numbers only.")
-
+    
     return calc(fig, func, size)
+
 
 if __name__ == "__main__":
     result = get_figure_result()
