@@ -10,17 +10,16 @@ sizes = {
     'square-perimeter': 1,
 }
 
-
 def calc(fig, func, size):
     if fig not in figs:
-        raise ValueError(f"Unknown figure: {fig}. \
-        Available figures are {figs}.")
+        raise ValueError(f"Unknown figure: {fig}. "
+                         f"Available figures are {figs}.")
     if func not in funcs:
-        raise ValueError(f"Unknown command: {func}. \
-        Available functions are {funcs}.")
+        raise ValueError(f"Unknown command: {func}. "
+                         f"Available functions are {funcs}.")
 
     if len(size) != sizes.get(f"{fig}-{func}", 1):
-        raise ValueError(f"Expected {sizes.get(f'{fig}-{func}', 1)}\ "
+        raise ValueError(f"Expected {sizes.get(f'{fig}-{func}', 1)} "
                          f"values for {fig} {func}, but got {len(size)}.")
 
     try:
@@ -36,16 +35,13 @@ def calc(fig, func, size):
         return result
 
     except Exception as e:
-        raise ValueError(f"Error calculating {func} of \ "
-                         f"{fig} with size {size}: {e}")
-
+        raise ValueError(f"Error calculating {func} of {fig} with size {size}: {e}")
 
 def get_figure_result():
     fig = ''
     func = ''
     size = list()
 
-    # Вводим фигуру
     while fig not in figs:
         fig = input(f"Enter figure name, available are {figs}:\n")
 
@@ -55,16 +51,15 @@ def get_figure_result():
     while len(size) != sizes.get(f"{func}-{fig}", 1):
         try:
             size = list(map(int, input(
-                f"Input figure sizes separated by space (expected \ "
+                f"Input figure sizes separated by space (expected "
                 f"{sizes.get(f'{func}-{fig}', 1)} values):\n").split()))
             if len(size) != sizes.get(f"{func}-{fig}", 1):
-                print(f"Expected {sizes.get(f'{func}-{fig}', 1)} \ "
+                print(f"Expected {sizes.get(f'{func}-{fig}', 1)} "
                       f"values, you entered {len(size)}. Please try again.")
         except ValueError:
             print("Invalid input! Please enter numbers only.")
 
     return calc(fig, func, size)
-
 
 if __name__ == "__main__":
     result = get_figure_result()
