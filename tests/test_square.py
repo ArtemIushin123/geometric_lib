@@ -2,6 +2,7 @@ import pytest
 from contextlib import nullcontext as does_not_raise
 from Programs.square import area, perimeter
 
+
 class TestSquare:
     @pytest.mark.parametrize(
         "a, result, expectation",
