@@ -2,6 +2,7 @@ import pytest
 from contextlib import nullcontext as does_not_raise
 from Programs.circle import area, perimeter
 
+
 class TestCircle:
     @pytest.mark.parametrize(
         "r, result, expectation",
