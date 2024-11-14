@@ -5,6 +5,7 @@ def area(a):
         raise TypeError("Side length must be positive")
     return a ** 2
 
+
 def perimeter(a):
     if not isinstance(a, (int, float)):
         raise TypeError("Input must be a number")
