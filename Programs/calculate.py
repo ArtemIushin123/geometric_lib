@@ -1,6 +1,3 @@
-import circle
-import square
-
 figs = ['circle', 'square']
 funcs = ['perimeter', 'area']
 sizes = {
@@ -9,6 +6,7 @@ sizes = {
     'square-area': 1,
     'square-perimeter': 1,
 }
+
 
 def calc(fig, func, size):
     if fig not in figs:
@@ -40,7 +38,8 @@ def get_figure_result():
     while len(size) != sizes.get(f"{func}-{fig}", 1):
         try:
             size = list(map(int, input(
-                f"Input figure sizes separated by space (expected {sizes.get(f'{func}-{fig}', 1)} values):\n").split()))
+                f"Input figure sizes separated by space (expected {sizes.get(f'{func}-{fig}', 1)} values):\n"
+            ).split()))
             if len(size) != sizes.get(f"{func}-{fig}", 1):
                 print(f"Expected {sizes.get(f'{func}-{fig}', 1)} values, you entered {len(size)}. Please try again.")
         except ValueError:
@@ -48,6 +47,7 @@ def get_figure_result():
 
     result = calc(fig, func, size)
     return result
+
 
 if __name__ == "__main__":
     result = get_figure_result()
