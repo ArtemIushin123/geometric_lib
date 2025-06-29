@@ -31,3 +31,4 @@ class TestCalc:
     def test_calc(self, fig, func, size, expected_result, expectation):
         with expectation:
             assert calc(fig, func, size) == expected_result
+# ккк
